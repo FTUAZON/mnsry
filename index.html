@@ -17,8 +17,10 @@ body {
     background: linear-gradient(to right, #ff9a9e, #fad0c4);
     color: #fff;
     min-height: 100vh;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Prevent horizontal scroll */
     position: relative;
+    margin: 0;
+    padding: 0;
 }
 
 .hero {
@@ -65,6 +67,7 @@ body {
     opacity: 0;
     animation: fadeInUp 1s ease forwards;
     animation-delay: 0.9s;
+    display: block;
 }
 
 /* Card message */
@@ -146,6 +149,13 @@ body {
     50% { opacity: 1; }
     100% { transform: translateX(calc(-50px + 100px*var(--x))) translateY(-600px) rotate(-45deg); opacity: 0;}
 }
+
+/* Prevent side scroll on small screens */
+@media (max-width: 576px) {
+    .video-element {
+        max-width: 95%; /* Make sure video stays inside viewport */
+    }
+}
 </style>
 </head>
 
@@ -181,7 +191,7 @@ const numberOfHearts = 15;
 for(let i=0;i<numberOfHearts;i++){
     const heart = document.createElement('div');
     heart.classList.add('heart');
-    heart.style.left = Math.random()*100 + 'vw';
+    heart.style.left = Math.random()*95 + 'vw'; // keep hearts inside viewport
     heart.style.setProperty('--x', Math.random());
     heart.style.animationDuration = (4 + Math.random()*3) + 's';
     heart.style.animationDelay = (Math.random()*3) + 's';
