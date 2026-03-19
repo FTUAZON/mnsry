@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>mnsry</title>
+<title>Happy Monthsary</title>
 
 <!-- Bootstrap CDN -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -79,7 +79,7 @@ body {
     animation-delay: 1.5s;
 }
 
-/* I Love You with heartbeat and gradient glow */
+/* I Love You with heartbeat and glow */
 .love-text {
     font-family: 'Great Vibes', cursive;
     font-size: 32px;
@@ -156,7 +156,7 @@ body {
     <h2 class="subtitle">Haniiii 💖</h2>
 
     <!-- VIDEO BELOW DATE -->
-    <video class="video-element" controls autoplay loop muted>
+    <video class="video-element" autoplay muted loop playsinline>
         <source src="1.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
@@ -187,6 +187,12 @@ for(let i=0;i<numberOfHearts;i++){
     heart.style.animationDelay = (Math.random()*3) + 's';
     document.body.appendChild(heart);
 }
+
+// Mobile autoplay fallback
+const video = document.querySelector('.video-element');
+video.play().catch(() => {
+    console.log("Autoplay prevented. User interaction required.");
+});
 </script>
 
 <!-- Bootstrap JS -->
